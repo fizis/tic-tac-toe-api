@@ -1,11 +1,21 @@
+const gameRepository = require('../repositories/gameRepository');
+
 exports.createGame = function(req, res) {
-    // TODO: implement
-    res.json({"result": "new game has been created and started"});
+    let game = gameRepository.createGame();
+ 
+    res.status(200).send(game);
+};
+
+exports.getAllGames = function(req, res) {
+    let games = gameRepository.getAllGames();
+ 
+    res.status(200).send(games);
 };
 
 exports.getGame = function(req, res) {
-    // TODO: implement
-    res.json({"id": req.params.id});
+    let game = gameRepository.getGame(req.params.id);
+ 
+    res.status(200).send(game);
 };
 
 exports.makeMove = function(req, res) {
