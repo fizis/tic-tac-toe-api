@@ -4,8 +4,8 @@ const Game = require('../models/game');
 const games =  [];
 
 exports.createGame = function() {
-    let id = uuidv1();
-    let game = new Game(id);
+    //let id = uuidv1(); // TODO: use UUID later, after testing
+    let game = new Game("test_id");
 
     games.push(game);
 
@@ -18,4 +18,10 @@ exports.getAllGames = function() {
 
 exports.getGame = function(id) {
     return games.find(g => g.id === id);
+};
+
+exports.updateGame = function(game) {
+    let gameToUpdate = games.find(g => g.id === game.id);
+
+    gameToUpdate = game;
 };

@@ -14,11 +14,22 @@ exports.getAllGames = function(req, res) {
 
 exports.getGame = function(req, res) {
     let game = gameRepository.getGame(req.params.id);
- 
+
+    // TODO: return 404 when no game is found
+    
     res.status(200).send(game);
 };
 
 exports.makeMove = function(req, res) {
-    // TODO: implement
-    res.json({"id": req.params.id});
+    // TODO: validate coordinates
+
+    let game = gameRepository.getGame(req.params.id);
+
+    // TODO: check that we have a requested game
+
+    game.makeMove(req.body.x, req.body.y);
+
+    gameRepository.updateGame(game);
+
+    res.status(200).send(game);
 };
