@@ -1,9 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const gamesController = require('./controllers/gamesController');
 
 const api = express();
 
+api.use(cors());
 api.use(bodyParser.json());
 api.use(bodyParser.urlencoded({ extended: false }));
 
