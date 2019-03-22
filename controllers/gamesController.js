@@ -16,7 +16,7 @@ exports.getGame = function(req, res) {
     let game = gameRepository.getGame(req.params.id);
 
     // TODO: return 404 when no game is found
-    
+
     res.status(200).send(game);
 };
 
@@ -31,5 +31,5 @@ exports.makeMove = function(req, res) {
 
     gameRepository.updateGame(game);
 
-    res.status(200).send(game);
+    res.status(200).send(game.moves[game.moves.length - 1]);
 };
