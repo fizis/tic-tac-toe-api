@@ -39,7 +39,7 @@ Game.prototype.makeMove = function(x, y) {
 
 // TODO: make this private
 Game.prototype.updateBoard = function(move) {
-    this.board[move.y][move.x] = move.marker;
+    this.board[move.x][move.y] = move.marker;
 }
 
 module.exports = Game;
