@@ -20,9 +20,20 @@ Game.prototype.makeMove = function(x, y) {
     if (y < 0 || y > 2) return;
     if (this.board[x][y] !== '') return;
     
+    let marker = this.getMoveMarker();
+    let move = new Move(x, y, marker);
+
+    this.moves.push(move);
+
+    this.updateBoard(move);
+    this.checkWinner();
+    this.checkEnded();
+}
+
+// TODO: make this private
+Game.prototype.getMoveMarker = function() {
     let marker = firstMoveMarker;
 
-    // TODO: extract to private method
     if (this.moves.length > 0) {
         let lastMove = this.moves[this.moves.length - 1];
         let lastMoveMarker = lastMove.marker;
@@ -34,13 +45,7 @@ Game.prototype.makeMove = function(x, y) {
         }
     }
 
-    let move = new Move(x, y, marker);
-
-    this.moves.push(move);
-
-    this.updateBoard(move);
-    this.checkWinner();
-    this.checkEnded();
+    return marker;
 }
 
 // TODO: make this private
