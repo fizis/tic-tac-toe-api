@@ -16,8 +16,9 @@ const Game = function(id) {
 }
 
 Game.prototype.makeMove = function(x, y) {
-    // TODO: validate if it's possible to make such a move
-    // e.g. valid coords and not a duplicate move
+    if (x < 0 || x > 2) return;
+    if (y < 0 || y > 2) return;
+    if (this.board[x][y] !== '') return;
     
     let marker = firstMoveMarker;
 
@@ -36,8 +37,8 @@ Game.prototype.makeMove = function(x, y) {
     let move = new Move(x, y, marker);
 
     this.moves.push(move);
-    this.updateBoard(move);
 
+    this.updateBoard(move);
     this.checkWinner();
     this.checkEnded();
 }

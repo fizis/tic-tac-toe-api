@@ -23,15 +23,15 @@ exports.getGame = function(req, res) {
 };
 
 exports.makeMove = function(req, res) {
-    // TODO: validate coordinates
-
     let game = gameRepository.getGame(req.params.id);
 
-    // TODO: check that we have a requested game
+    if (game) {
+        game.makeMove(req.body.x, req.body.y);
 
-    game.makeMove(req.body.x, req.body.y);
+        gameRepository.updateGame(game);
 
-    gameRepository.updateGame(game);
-
-    res.status(200).send(game.moves[game.moves.length - 1]);
+        res.status(200).send(game.moves[game.moves.length - 1]);
+    } else {
+        res.status(404).json({ message: 'Game not found' });
+    }
 };
