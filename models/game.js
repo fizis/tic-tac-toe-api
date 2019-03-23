@@ -52,8 +52,6 @@ class Game {
     }
 
     _checkWinner() {
-        console.log(this.board);
-
         let winner = this._getWinnerByCol(this.board);
 
         if (winner !== '') {
@@ -62,8 +60,6 @@ class Game {
         }
 
         var transposedBoard = this.board[0].map((col, i) => this.board.map(row => row[i]));
-
-        console.log(transposedBoard);
         
         winner = this._getWinnerByCol(transposedBoard);
 

@@ -9,9 +9,7 @@ api.use(cors());
 api.use(bodyParser.json());
 api.use(bodyParser.urlencoded({ extended: false }));
 
-// TODO: move to routes file
 api.get('/', (req, res) => res.send('Tic Tac Toe Game API'));
-
 api.post('/games', gamesController.createGame);
 api.get('/games', gamesController.getAllGames);
 api.get('/games/:id', gamesController.getGame);
