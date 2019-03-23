@@ -15,9 +15,11 @@ exports.getAllGames = function(req, res) {
 exports.getGame = function(req, res) {
     let game = gameRepository.getGame(req.params.id);
 
-    // TODO: return 404 when no game is found
-
-    res.status(200).send(game);
+    if (game) {
+        res.status(200).send(game);
+    } else {
+        res.status(404).json({ message: 'Game not found' });
+    }
 };
 
 exports.makeMove = function(req, res) {

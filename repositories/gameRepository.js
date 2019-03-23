@@ -4,8 +4,8 @@ const Game = require('../models/game');
 const games =  [];
 
 exports.createGame = function() {
-    //let id = uuidv1(); // TODO: use UUID later, after testing
-    let game = new Game("test_id");
+    let id = uuidv1();
+    let game = new Game(id);
 
     games.push(game);
 
