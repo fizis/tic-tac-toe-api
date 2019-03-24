@@ -5,7 +5,8 @@
   "repository": "https://github.com/fizis/tic-tac-toe-api.git",
   "main": "api.js",
   "scripts": {
-    "start": "nodemon api.js"
+    "start": "nodemon api.js",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +17,8 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "jest": "^24.5.0",
+    "node-mocks-http": "^1.7.3",
     "nodemon": "^1.18.10"
   }
 }
