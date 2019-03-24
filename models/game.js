@@ -2,6 +2,7 @@ const Move = require('./move');
 
 const firstMoveMarker = 'x';
 
+// TODO: write UTs
 class Game {
     constructor(id) {
         this.id = id;
@@ -28,6 +29,8 @@ class Game {
         this._updateBoard(move);
         this._checkWinner();
         this._checkEnded();
+
+        return move;
     }
     
     _getMoveMarker() {

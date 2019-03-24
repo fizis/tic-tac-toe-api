@@ -29,11 +29,11 @@ class GamesController {
         let game = this._gameRepository.getGame(req.params.id);
     
         if (game) {
-            game.makeMove(req.body.x, req.body.y);
+            let move = game.makeMove(req.body.x, req.body.y);
     
             this._gameRepository.updateGame(game);
     
-            res.status(200).send(game.moves[game.moves.length - 1]);
+            res.status(200).send(move);
         } else {
             res.status(404).json({ message: 'Game not found' });
         }

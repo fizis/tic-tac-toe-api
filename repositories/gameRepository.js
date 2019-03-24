@@ -1,6 +1,7 @@
 const uuidv1 = require('uuid/v1');
 const Game = require('../models/game');
 
+// TODO: write UTs
 class GameRepository {
     constructor() {
         this._games = [];
