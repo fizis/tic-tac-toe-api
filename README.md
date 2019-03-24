@@ -33,3 +33,5 @@ Build image:
 
 Run container from image built on port 3333:
 `docker run -p 3333:3333 [image name]`
+
+The port can be configured in the .env file.

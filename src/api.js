@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -19,6 +20,6 @@ api.get('/games', (req, res) => gamesController.getAllGames(req, res));
 api.get('/games/:id', (req, res) => gamesController.getGame(req, res));
 api.post('/games/:id/moves', (req, res) => gamesController.makeMove(req, res));
 
-const port = 3333;
+const port = process.env.PORT || 3333;
 
 api.listen(port, () => console.log(`API is listening on port ${port}!`));
