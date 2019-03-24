@@ -1,7 +1,8 @@
 {
   "name": "tic-tac-toe-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tic Tac Toe Game API",
+  "repository": "https://github.com/fizis/tic-tac-toe-api.git",
   "main": "api.js",
   "scripts": {
     "start": "nodemon api.js"
