@@ -2,7 +2,15 @@
 
 Game description: https://en.wikipedia.org/wiki/Tic-tac-toe
 
-## Usage
+## Endpoints
+
+Currently the API supports such actions:
+createGame
+getAllGames
+getGame
+makeMove
+
+### Usage
 
 The API is designed to work with [**Tic Tac Toe Game UI**](https://github.com/fizis/tic-tac-toe-ui), but also is completely UI agnostic.
 
