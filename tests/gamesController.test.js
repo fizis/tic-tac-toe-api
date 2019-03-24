@@ -1,8 +1,8 @@
 const httpMockUtil = require('./httpMockUtil');
-const Move = require('../models/move');
-const Game = require('../models/game');
-const GameRepository = require('../repositories/gameRepository');
-const GamesController = require('../controllers/gamesController');
+const Move = require('../src/models/move');
+const Game = require('../src/models/game');
+const GameRepository = require('../src/repositories/gameRepository');
+const GamesController = require('../src/controllers/gamesController');
 
 const gameRepository = new GameRepository();
 
