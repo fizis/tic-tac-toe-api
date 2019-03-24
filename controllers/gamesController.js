@@ -1,37 +1,43 @@
-const gameRepository = require('../repositories/gameRepository');
+class GamesController {
+    constructor(gameRepository) {
+        this._gameRepository = gameRepository;
+    }
 
-exports.createGame = function(req, res) {
-    let game = gameRepository.createGame();
- 
-    res.status(200).send(game);
-};
-
-exports.getAllGames = function(req, res) {
-    let games = gameRepository.getAllGames();
- 
-    res.status(200).send(games);
-};
-
-exports.getGame = function(req, res) {
-    let game = gameRepository.getGame(req.params.id);
-
-    if (game) {
+    createGame(req, res) {
+        let game = this._gameRepository.createGame();
+     
         res.status(200).send(game);
-    } else {
-        res.status(404).json({ message: 'Game not found' });
     }
-};
 
-exports.makeMove = function(req, res) {
-    let game = gameRepository.getGame(req.params.id);
-
-    if (game) {
-        game.makeMove(req.body.x, req.body.y);
-
-        gameRepository.updateGame(game);
-
-        res.status(200).send(game.moves[game.moves.length - 1]);
-    } else {
-        res.status(404).json({ message: 'Game not found' });
+    getAllGames(req, res) {
+        let games = this._gameRepository.getAllGames();
+     
+        res.status(200).send(games);
     }
-};
+    
+    getGame(req, res) {
+        let game = this._gameRepository.getGame(req.params.id);
+    
+        if (game) {
+            res.status(200).send(game);
+        } else {
+            res.status(404).json({ message: 'Game not found' });
+        }
+    }
+    
+    makeMove(req, res) {
+        let game = this._gameRepository.getGame(req.params.id);
+    
+        if (game) {
+            game.makeMove(req.body.x, req.body.y);
+    
+            this._gameRepository.updateGame(game);
+    
+            res.status(200).send(game.moves[game.moves.length - 1]);
+        } else {
+            res.status(404).json({ message: 'Game not found' });
+        }
+    }
+}
+
+module.exports = GamesController;

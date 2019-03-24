@@ -1,6 +1,10 @@
 const httpMocks = require('node-mocks-http');
-const gamesController = require('../controllers/gamesController');
 const Game = require('../models/game');
+const GameRepository = require('../repositories/gameRepository');
+const GamesController = require('../controllers/gamesController');
+
+const gameRepository = new GameRepository();
+const gamesController = new GamesController(gameRepository);
 
 const mockResponse = () => {
   const res = {};
