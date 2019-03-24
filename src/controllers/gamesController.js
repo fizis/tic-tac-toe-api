@@ -4,19 +4,19 @@ class GamesController {
     }
 
     createGame(req, res) {
-        let game = this._gameRepository.createGame();
+        const game = this._gameRepository.createGame();
      
         res.status(200).send(game);
     }
 
     getAllGames(req, res) {
-        let games = this._gameRepository.getAllGames();
+        const games = this._gameRepository.getAllGames();
      
         res.status(200).send(games);
     }
     
     getGame(req, res) {
-        let game = this._gameRepository.getGame(req.params.id);
+        const game = this._gameRepository.getGame(req.params.id);
     
         if (game) {
             res.status(200).send(game);
@@ -26,10 +26,10 @@ class GamesController {
     }
     
     makeMove(req, res) {
-        let game = this._gameRepository.getGame(req.params.id);
+        const game = this._gameRepository.getGame(req.params.id);
     
         if (game) {
-            let move = game.makeMove(req.body.x, req.body.y);
+            const move = game.makeMove(req.body.x, req.body.y);
     
             this._gameRepository.updateGame(game);
     

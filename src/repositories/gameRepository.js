@@ -8,8 +8,8 @@ class GameRepository {
     }
 
     createGame() {
-        let id = uuidv1();
-        let game = new Game(id);
+        const id = uuidv1();
+        const game = new Game(id);
     
         this._games.push(game);
     

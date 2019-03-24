@@ -21,8 +21,8 @@ class Game {
         if (y < 0 || y > 2) return;
         if (this.board[x][y] !== '') return;
         
-        let marker = this._getMoveMarker();
-        let move = new Move(x, y, marker);
+        const marker = this._getMoveMarker();
+        const move = new Move(x, y, marker);
     
         this.moves.push(move);
     
@@ -37,8 +37,8 @@ class Game {
         let marker = firstMoveMarker;
 
         if (this.moves.length > 0) {
-            let lastMove = this.moves[this.moves.length - 1];
-            let lastMoveMarker = lastMove.marker;
+            const lastMove = this.moves[this.moves.length - 1];
+            const lastMoveMarker = lastMove.marker;
 
             if (lastMoveMarker === 'x') {
                 marker = 'o';
@@ -62,7 +62,7 @@ class Game {
             return;
         }
 
-        var transposedBoard = this.board[0].map((col, i) => this.board.map(row => row[i]));
+        const transposedBoard = this.board[0].map((col, i) => this.board.map(row => row[i]));
         
         winner = this._checkWinnerByCol(transposedBoard);
 
