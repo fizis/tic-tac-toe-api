@@ -55,7 +55,7 @@ class Game {
     }
 
     _checkWinner() {
-        let winner = this._getWinnerByCol(this.board);
+        let winner = this._checkWinnerByCol(this.board);
 
         if (winner !== '') {
             this.winner = winner;
@@ -64,17 +64,17 @@ class Game {
 
         var transposedBoard = this.board[0].map((col, i) => this.board.map(row => row[i]));
         
-        winner = this._getWinnerByCol(transposedBoard);
+        winner = this._checkWinnerByCol(transposedBoard);
 
         if (winner !== '') {
             this.winner = winner;
             return;
         }
 
-        this.winner = this._getWinnerByDiag(this.board);
+        this.winner = this._checkWinnerByDiag(this.board);
     }
 
-    _getWinnerByCol(board) {
+    _checkWinnerByCol(board) {
         for(let i = 0; i < board.length; i++) {
             let col = board[i].join('');
 
@@ -90,7 +90,7 @@ class Game {
         return '';
     }
 
-    _getWinnerByDiag(board) {
+    _checkWinnerByDiag(board) {
         let diag1 = '';
         let diag2 = '';
 
