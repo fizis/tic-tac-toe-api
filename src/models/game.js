@@ -17,6 +17,7 @@ class Game {
     }
 
     makeMove(x, y) {
+        // TODO: don't fail silently - return validation error
         if (x < 0 || x > 2) return;
         if (y < 0 || y > 2) return;
         if (this.board[x][y] !== '') return;
