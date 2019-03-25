@@ -30,9 +30,7 @@ class GamesController {
     
         if (game) {
             const move = game.makeMove(req.body.x, req.body.y);
-    
-            this._gameRepository.updateGame(game);
-    
+            
             res.status(200).send(move);
         } else {
             res.status(404).json({ message: 'Game not found' });

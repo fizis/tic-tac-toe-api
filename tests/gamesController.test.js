@@ -80,7 +80,7 @@ it('makes a move if game found', () => {
   updatedGame.board[1][0] = 'x';
   
   gameRepository.getGame = jest.fn(() => { return game; });
-  gameRepository.updateGame = jest.fn();
+  game.makeMove = jest.fn(() => { return move; });
 
   const req = { params: { id: gameId }, body: { x: 1, y: 0 } };
   const res = httpMockUtil.mockResponse();
@@ -88,16 +88,17 @@ it('makes a move if game found', () => {
 
   gamesController.makeMove(req, res);
   
-  expect(gameRepository.updateGame).toHaveBeenCalledWith(updatedGame);
+  expect(game.makeMove).toHaveBeenCalledWith(1, 0);
   expect(res.status).toHaveBeenCalledWith(200);
   expect(res.send).toHaveBeenCalledWith(move);
 });
 
 it('does not make a move if game not found', () => {
   const gameId = 'test_id';
-  
+  const game = new Game(gameId);
+
   gameRepository.getGame = jest.fn(() => { return undefined; });
-  gameRepository.updateGame = jest.fn();
+  game.makeMove = jest.fn();
 
   const req = { params: { id: gameId }, body: { x: 1, y: 0 } };
   const res = httpMockUtil.mockResponse();
@@ -105,7 +106,7 @@ it('does not make a move if game not found', () => {
 
   gamesController.makeMove(req, res);
   
-  expect(gameRepository.updateGame).toHaveBeenCalledTimes(0);
+  expect(game.makeMove).toHaveBeenCalledTimes(0);
   expect(res.status).toHaveBeenCalledWith(404);
   expect(res.json).toHaveBeenCalledWith({ message: 'Game not found' });
 });

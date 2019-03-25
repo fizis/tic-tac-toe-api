@@ -23,12 +23,6 @@ class GameRepository {
     getGame(id) {
         return this._games.find(g => g.id === id);
     }
-    
-    updateGame(game) {
-        let gameToUpdate = this._games.find(g => g.id === game.id);
-    
-        gameToUpdate = game;
-    }
 }
 
 module.exports = GameRepository;
